@@ -3,8 +3,24 @@ const express = require('express');
 const router = express.Router();
 
 
+
+const postDb = require('./postDb');
+
+
 router.get('/', (req, res) => {
-  res.send('found me!');
+  let posts = null;
+  postDb.get(posts).then(
+    // posts = posts
+    res.status(200).json({
+     1: {
+        userrname: 'jbivvy'
+      },
+      2: {
+        username: 'schlitz'
+      }
+    })
+  );
+  
 });
 
 router.get('/:id', (req, res) => {
